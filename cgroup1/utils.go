@@ -46,7 +46,7 @@ func defaults(root string) ([]Subsystem, error) {
 		NewCpuset(root),
 		NewCpu(root),
 		NewCpuacct(root),
-		NewMemory(root),
+		NewMemory(root, OptionalSwap()),
 		NewBlkio(root),
 		NewRdma(root),
 	}
