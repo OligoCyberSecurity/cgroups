@@ -1,4 +1,4 @@
-module github.com/containerd/cgroups/v3
+module github.com/OligoCyberSecurity/cgroups
 
 go 1.18
 
