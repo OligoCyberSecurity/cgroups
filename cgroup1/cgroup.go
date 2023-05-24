@@ -49,12 +49,10 @@ func New(path Path, resources *specs.LinuxResources, opts ...InitOpts) (Cgroup, 
 	for _, s := range subsystems {
 		// check if subsystem exists
 		if err := initializeSubsystem(s, path, resources); err != nil {
-			if err == ErrControllerNotActive {
-				if config.InitCheck != nil {
-					if skerr := config.InitCheck(s, path, err); skerr != nil {
-						if skerr != ErrIgnoreSubsystem {
-							return nil, skerr
-						}
+			if config.InitCheck != nil {
+				if skerr := config.InitCheck(s, path, err); skerr != nil {
+					if skerr != ErrIgnoreSubsystem {
+						return nil, skerr
 					}
 				}
 				continue
